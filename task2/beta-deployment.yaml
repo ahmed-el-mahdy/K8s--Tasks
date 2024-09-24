@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beta
+  namespace: finance
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: redis-app
+  template:
+    metadata:
+      labels:
+        color: blue
+        app: redis-app
+    spec:
+      containers:
+      - name: redis-container
+        image: redis
+        resources:
+          requests:
+            cpu: "1"
+            memory: "1Gi"
